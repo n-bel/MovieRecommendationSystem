@@ -1,0 +1,50 @@
+scalar GraphQLLong
+
+# Defines the available queries that clients can use to fetch data
+type Query {
+    # Fetch a single movie by its unique ID
+    movie(id: GraphQLLong!): Movie
+
+    # Fetch a list of movies based on optional filters like genre or title
+    movies(genre: String, title: String): [Movie]
+
+    # Fetch all reviews written by a specific user
+    userReviews(userId: GraphQLLong!): [Review]
+
+    # Get personalized movie recommendations for a user
+    movieRecommendations(userId: GraphQLLong!): [Movie]
+}
+
+# Defines mutations (operations that modify data)
+type Mutation {
+    # Add a new review for a movie with a rating and comment
+    addReview(movieId: GraphQLLong!, rating: Int!, comment: String!): Review
+
+    # Update an existing review's rating or comment
+    updateReview(id: GraphQLLong!, rating: Int, comment: String): Review
+
+    # Delete a review by its ID, returning true if successful
+    deleteReview(id: GraphQLLong!): Boolean
+}
+
+# Represents a movie entity
+type Movie {
+    id: GraphQLLong     # Unique identifier for the movie
+    title: String       # Title of the movie
+    genre: String       # Genre of the movie (e.g., Action, Drama)
+    director: String    # Director of the movie
+    releaseDate: String # Release date in string format (e.g., YYYY-MM-DD)
+    reviews: [Review]   # List of reviews associated with the movie
+}
+
+# Represents a review entity
+type Review {
+    id: GraphQLLong # Unique identifier for the review
+    rating: Int     # Rating given to the movie
+}
+
+# Represents a user entity
+type User {
+    id: GraphQLLong  # Unique identifier for the user
+    username: String # The username of the reviewer
+}
