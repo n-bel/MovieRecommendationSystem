@@ -1,6 +1,7 @@
 package graphql.scalars;
 
 import graphql.PublicApi;
+import graphql.scalars.id.UUIDScalar;
 import graphql.scalars.java.JavaPrimitives;
 import graphql.schema.GraphQLScalarType;
 
@@ -9,6 +10,12 @@ import graphql.schema.GraphQLScalarType;
  */
 @PublicApi
 public class ExtendedScalars {
+
+    /**
+     * A UUID scalar that accepts a universally unique identifier and produces {@link
+     * java.util.UUID} objects at runtime.
+     */
+    public static final GraphQLScalarType GraphQLUUID = UUIDScalar.INSTANCE;
 
     /**
      * This represents the "Long" type which is a representation of java.lang.Long
