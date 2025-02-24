@@ -1,36 +1,35 @@
-scalar GraphQLLong
-scalar GraphQLUUID
+scalar UUID
 
 # Defines the available queries that clients can use to fetch data
 type Query {
     # Fetch a single movie by its unique ID
-    movie(id: GraphQLUUID!): Movie
+    movie(id: UUID!): Movie
 
     # Fetch a list of movies based on optional filters like genre or title
     movies(genre: String, title: String): [Movie]
 
     # Fetch all reviews written by a specific user
-    userReviews(userId: GraphQLUUID!): [Review]
+    userReviews(userId: UUID!): [Review]
 
     # Get personalized movie recommendations for a user
-    movieRecommendations(userId: GraphQLUUID!): [Recommendation]
+    movieRecommendations(userId: UUID!): [Recommendation]
 }
 
 # Defines mutations (operations that modify data)
 type Mutation {
     # Add a new review for a movie with a rating and comment
-    addReview(userId: GraphQLUUID!, movieId: GraphQLUUID!, comment: String!): Review
+    addReview(userId: UUID!, movieId: UUID!, comment: String!): Review
 
     # Update an existing review's rating or comment
-    updateReview(id: GraphQLUUID!, rating: Int, comment: String): Review
+    updateReview(id: UUID!, rating: Int, comment: String): Review
 
     # Delete a review by its ID, returning true if successful
-    deleteReview(id: GraphQLUUID!): Boolean
+    deleteReview(id: UUID!): Boolean
 }
 
 # Represents a movie entity
 type Movie {
-    id: GraphQLUUID     # Unique identifier for the movie
+    id: UUID     # Unique identifier for the movie
     genre: String       # Genre of the movie (e.g., Action, Drama)
     title: String       # Title of the movie
     director: String    # Director of the movie
@@ -39,19 +38,19 @@ type Movie {
 
 # Represents a review entity
 type Review {
-    id: GraphQLUUID # Unique identifier for the review
+    id: UUID # Unique identifier for the review
     rating: Int     # Rating given to the movie
 }
 
 # Represents a user entity
 type User {
-    id: GraphQLUUID  # Unique identifier for the user
+    id: UUID  # Unique identifier for the user
     username: String # The username of the reviewer
 }
 
 # Represents a recommendation entity
 type Recommendation {
-    id: GraphQLUUID # Unique identifier for the recommendation
+    id: UUID # Unique identifier for the recommendation
     users: [User]   # The username of the recipient for the recommendation
     movies: [Movie] # The movie that is recommended
     score: Float   # The score attributed to the recommendation

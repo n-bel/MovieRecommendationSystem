@@ -1,6 +1,7 @@
 package com.mrs.entity;
 
 import jakarta.persistence.*;
+import org.springframework.graphql.data.method.annotation.SchemaMapping;
 
 import java.util.UUID;
 
@@ -9,7 +10,6 @@ import java.util.UUID;
  * It is a JPA entity that can be mapped to a table in the database.
  */
 @Entity
-
 @Table(name = "movies")
 public class Movie {
 

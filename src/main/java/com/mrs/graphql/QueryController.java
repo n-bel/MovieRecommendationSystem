@@ -1,4 +1,4 @@
-package graphql;
+package com.mrs.graphql;
 
 import com.mrs.entity.Movie;
 import com.mrs.entity.Recommendation;
