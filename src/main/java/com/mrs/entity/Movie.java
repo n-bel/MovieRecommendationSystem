@@ -28,8 +28,7 @@ public class Movie {
         this.id = id;
     }
 
-    public Movie(UUID id, String genre, String title, String director, String releaseDate) {
-        this.id = id;
+    public Movie(String genre, String title, String director, String releaseDate) {
         this.genre = genre;
         this.title = title;
         this.director = director;

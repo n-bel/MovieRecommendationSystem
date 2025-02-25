@@ -37,6 +37,10 @@ public class User {
         this.password = password;
     }
 
+    public User() {
+
+    }
+
     // Getter and Setter methods for the id field
     public UUID getId() {
         return id; // Returns the user's ID

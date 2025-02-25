@@ -2,6 +2,9 @@ scalar UUID
 
 # Defines the available queries that clients can use to fetch data
 type Query {
+    # Fetch all users
+    users: [User]
+
     # Fetch a single movie by its unique ID
     movie(id: UUID!): Movie
 
@@ -17,6 +20,9 @@ type Query {
 
 # Defines mutations (operations that modify data)
 type Mutation {
+    # Add a new movie
+    addMovie(genre: String!, title: String!, director: String!, releaseDate: String!): Movie
+
     # Add a new review for a movie with a rating and comment
     addReview(userId: UUID!, movieId: UUID!, comment: String!): Review
 
@@ -39,13 +45,18 @@ type Movie {
 # Represents a review entity
 type Review {
     id: UUID # Unique identifier for the review
+    user: User
+    movie: Movie
     rating: Int     # Rating given to the movie
+    comment: String
 }
 
 # Represents a user entity
 type User {
     id: UUID  # Unique identifier for the user
     username: String # The username of the reviewer
+    email: String
+    role: String
 }
 
 # Represents a recommendation entity
